@@ -1,0 +1,130 @@
+---
+alwaysApply: true
+---
+## 2. Common Rules
+
+### 2.1. File
+- ★ Encoding: UTF-8 without BOM  
+- ★ Không chỉnh sửa trực tiếp `fuel/core`, chỉ override  
+- ■ Tên file viết bằng **chữ thường**  
+
+### 2.2. Line
+- ■ Không bắt buộc giới hạn độ dài dòng, nhưng nên vừa đủ để dễ đọc  
+
+### 2.3. Indentation
+- ■ Thụt lề dùng **tab** (tương đương 4 spaces)  
+- ★ File `routes.php` giữ format giống code xung quanh  
+- Ngoại lệ: View có thể linh hoạt  
+
+### 2.4. Type declaration
+- ★ Không dùng `object` trong type declaration, phải ghi rõ class  
+
+### 2.5. Naming convention
+- ★ Biến boolean dùng prefix: `is_xxx`, `has_xxx`, `can_xxx`  
+- ★ Không đặt tên biến vô nghĩa: `a`, `b`, `c` hoặc `data1`, `data2`  
+- ★ Biến **snake_case**  
+- ■ Biến input đặt tên giống tên Method trong Input  
+- ★ Biến truyền từ Controller sang View phải gói trong `$data`  
+
+### 2.6. Constant
+- ★ Dùng constant thay cho magic number  
+- ★ Không tạo constant trùng ý nghĩa  
+
+### 2.7. Array
+- ★ Dùng `[]` thay vì `array()`  
+- ★ Array destructuring: dùng `[]` thay `list()`  
+
+
+## 3. Declare, Namespace, Import  
+- ★ Không bắt buộc namespace cho mọi class  
+- Với `tasks`: bắt buộc `namespace Fuel\Tasks;`  
+
+---
+
+## 4. Class
+
+### 4.1. Common
+- ■ `{` ở dòng mới  
+- ■ Tên class: PascalCase + `_` (để autoload đúng)  
+- ★ Tên class phải khớp với path trong `classes/`  
+
+### 4.2. Constant
+- ■ Constant trong class: `CONSTANT_CASE`  
+
+### 4.3. Properties
+- ■ Không prefix `_` cho property  
+- ■ Tên property dạng **snake_case**  
+- ★ Mỗi property cần PHPDoc  
+
+### 4.4. Method
+- ■ `{` ở dòng mới  
+- ■ Không prefix `_` cho method  
+- ★ Mỗi method cần PHPDoc  
+
+### 4.5. Parameter & Return
+- ★ Phải khai báo type cho **parameter** và **return**  
+
+---
+
+## 5. Control Flow
+
+- ■ Luôn có `{}` cho block  
+- ■ `elseif` thay vì `else if`  
+- ★ Nếu nhiều điều kiện, format rõ ràng xuống dòng hoặc viết trên cùng 1 dòng  
+- ■ Switch/case: `{` cùng dòng, `break` thụt lề cùng cấp  
+- ■ Foreach: không dùng `$k`, `$v`; không truyền tham chiếu  
+
+---
+
+## 6. Operator
+- ■ Toán tử chuỗi `.` phải có space 2 bên  
+
+---
+
+## 7. Closure
+- ■ `{` cùng dòng với khai báo closure  
+
+---
+
+## 8. DB & SQL
+- ★ Luôn dùng Raw SQL, không dùng Query Builder  
+- ★ Bắt buộc placeholder + bind parameter (`:id`, `:name`)  
+- ★ INSERT/UPDATE/DELETE phải trong **try block**  
+- ★ Nhiều thao tác SQL → dùng transaction  
+- ★ Batch ghi dữ liệu: tối đa 1000 record/lần  
+
+---
+
+## 9. Architecture & Clean Code
+- ★ Xóa code chết, biến/hàm/import không dùng  
+- ★ Dùng constant cho giá trị cố định  
+- ★ 1 Controller ⇔ 1 Service, không chéo nhau  
+- ★ Logic dùng chung: đưa vào `classes/func/`  
+
+---
+
+## 10. HTML, CSS, JS
+- ■ Không dùng `<?= ?>`, chỉ dùng `<?php echo ?>`  
+- ■ Không ghi spec trong comment HTML  
+- ★ Selector JS phải prefix `js-`  
+- ★ Không nhúng trực tiếp biến PHP vào `<script>`, dùng `data-*`  
+
+---
+
+## 11. Hình ảnh
+- ★ Ảnh public: dùng `Asset::img()`  
+- ★ Ảnh từ S3: dùng `<img>`  
+- ★ Ảnh phải nén bằng Squoosh  
+- ★ Đặt tên ảnh tiếng Anh, không dùng tiếng Nhật  
+- ★ Ảnh `@2x` dùng cho màn hình SP  
+
+---
+
+## 12. Tools
+- **PHPCS** (chuẩn PSR-12 + rule tùy chỉnh)  
+- **EditorConfig** (thống nhất indent, newline)  
+- **Pre-commit hook** (chạy tự động phpcs/phpcbf trước khi commit)  
+
+---
+
+✅ **Mục tiêu**: đảm bảo code dễ đọc, dễ maintain, thống nhất giữa các dev và phù hợp cho CI/CD.  

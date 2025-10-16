@@ -1,0 +1,55 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Documentation
+README.md
+CHANGELOG.md
+CONTRIBUTING.md
+LICENSE.md
+TESTING.md
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+fuel/app/logs/*
+fuel/app/cache/*
+fuel/app/tmp/*
+
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Uploads (will be mounted as volume)
+public/uploads/*
+
+# Backup files
+*.bak
+*.backup
+*.sql
+
+# Test files
+fuel/app/tests/*
+phpunit.xml
